@@ -1,0 +1,41 @@
+<h2 class="sub-header">My contact</h2>
+<div class="table-responsive">
+  <!-- Single button -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      All <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Freind</a></li>
+      <li><a href="#">Family</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">School</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div>
+  <a class="btn btn-success pull-right" routerLink="/contact/new">Add contact</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Tag</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of contact">
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td><span class="label label-info">朋友</span></td>
+        <td>
+          <a [routerLink]="['/contact/edit', item.id]">Edit</a>
+          <a href="#" (click)="deleteContact(item.id, $event)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

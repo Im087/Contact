@@ -1,0 +1,38 @@
+<div class="container">
+  <form class="form-signin" action="index.html" #signinform="ngForm" (submit)="signin()">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label class="sr-only" for="inputEmail">EmailAddress</label>
+    <input
+      class="form-control"
+      name="email"
+      type="email"
+      id="inputEmail"
+      placeholder="Email"
+      email="true"
+      required
+      [(ngModel)]="signinForm.email"
+      #email="ngModel"
+      (keyup)="deleteMessage()">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">Email is required.</div>
+        <div *ngIf="email.errors.email">Invalid Email.</div>
+      </div>
+    <label class="sr-only" for="inputPassword">Password</label>
+    <input
+      class="form-control"
+      name="password"
+      type="password"
+      id="inputPassword"
+      placeholder="Password"
+      required
+      [(ngModel)]="signinForm.password"
+      #password="ngModel"
+      (keyup)="deleteMessage()">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+        <div *ngIf="password.errors.required">Password is required.</div>
+      </div>
+      <div class="alert alert-danger" *ngIf="errorMessage && password.value">{{errorMessage}}</div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="signinform.form.invalid">Sign in</button>
+  </form>
+  <p class="info"><a routerLink="/signup">Don't have an account? Create one here.</a></p>
+</div>

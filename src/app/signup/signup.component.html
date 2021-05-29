@@ -1,0 +1,41 @@
+<div class="container">
+  <form class="form-signin" #signupform="ngForm" (submit)="signup()">
+    <h2 class="form-signin-heading">Please sign up</h2>
+    <label class="sr-only" for="inputEmail">EmailAddress</label>
+    <input
+      class="form-control"
+      name="email"
+      type="email"
+      id="inputEmail"
+      placeholder="Email"
+      email="true"
+      required
+      [(ngModel)]="signupForm.email"
+      #email="ngModel"
+      (keyup)="deleteMessage()">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">Email is required.</div>
+        <div *ngIf="email.errors.email">Invalid Email.</div>
+      </div>
+      <div class="alert alert-danger" *ngIf="errorMessage && email.value">{{errorMessage}}</div>
+    <label class="sr-only" for="inputPassword">Password</label>
+    <input
+      #password="ngModel"
+      class="form-control"
+      name="password"
+      type="password"
+      id="inputPassword"
+      placeholder="Password"
+      minlength="6"
+      maxlength="18"
+      required
+      [(ngModel)]="signupForm.password">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+        <div *ngIf="password.errors.required">Password is required.</div>
+        <div *ngIf="password.errors.minlength">Password too short.</div>
+        <div *ngIf="password.errors.maxlength">Password too long.</div>
+      </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="signupform.form.invalid">Sign in</button>
+  </form>
+  <p class="info"><a routerLink="/signin">Already have an account? Login here.</a></p>
+</div>
