@@ -25,3 +25,27 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# How to run the App?
+
+## Download
+```
+```
+
+## Install server dependencies and run the server
+In the `angular-contacts-api` folder
+```
+npm install
+```
+```
+node app.js
+```
+
+# Install Angular dependencies and run the app
+Back to the main folder
+```
+npm install
+```
+```
+ng serve
+```
